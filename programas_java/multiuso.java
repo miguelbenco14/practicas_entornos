@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class multiuso {
 
@@ -26,10 +27,10 @@ public class multiuso {
                     conversorTemperaturas(scanner);
                     break;
                 case 3:
-                    System.out.println("Generador de números aleatorios (pendiente de implementación)");
+                    generadorNumerosAleatorios(scanner);
                     break;
                 case 4:
-                    System.out.println("Verificar si un número es primo (pendiente de implementación)");
+                    verificarNumeroPrimo(scanner);
                     break;
                 case 5:
                     System.out.println("Contador de palabras (pendiente de implementación)");
@@ -107,6 +108,48 @@ public class multiuso {
             System.out.println(temp + " °F son " + convertida + " °C");
         } else {
             System.out.println("Opción no válida.");
+        }
+    }
+
+    public static void generadorNumerosAleatorios(Scanner scanner) {
+        System.out.println("--- Generador de Números Aleatorios ---");
+        System.out.print("Introduce el valor mínimo: ");
+        int min = scanner.nextInt();
+        System.out.print("Introduce el valor máximo: ");
+        int max = scanner.nextInt();
+
+        if (min > max) {
+            System.out.println("El valor mínimo no puede ser mayor que el máximo.");
+            return;
+        }
+
+        Random random = new Random();
+        int numeroAleatorio = random.nextInt(max - min + 1) + min;
+        System.out.println("Número aleatorio generado: " + numeroAleatorio);
+    }
+
+    public static void verificarNumeroPrimo(Scanner scanner) {
+        System.out.println("--- Verificar si un Número es Primo ---");
+        System.out.print("Introduce un número: ");
+        int numero = scanner.nextInt();
+
+        if (numero <= 1) {
+            System.out.println(numero + " no es un número primo.");
+            return;
+        }
+
+        boolean esPrimo = true;
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0) {
+                esPrimo = false;
+                break;
+            }
+        }
+
+        if (esPrimo) {
+            System.out.println(numero + " es un número primo.");
+        } else {
+            System.out.println(numero + " no es un número primo.");
         }
     }
 }
