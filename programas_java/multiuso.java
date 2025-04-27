@@ -18,6 +18,7 @@ public class multiuso {
             System.out.println("0. Salir");
             System.out.print("Elige una opción: ");
             opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir salto de línea pendiente
 
             switch (opcion) {
                 case 1:
@@ -33,7 +34,7 @@ public class multiuso {
                     verificarNumeroPrimo(scanner);
                     break;
                 case 5:
-                    System.out.println("Contador de palabras (pendiente de implementación)");
+                    contadorPalabras(scanner);
                     break;
                 case 6:
                     System.out.println("Mostrar fecha y hora actual (pendiente de implementación)");
@@ -151,5 +152,19 @@ public class multiuso {
         } else {
             System.out.println(numero + " no es un número primo.");
         }
+    }
+
+    public static void contadorPalabras(Scanner scanner) {
+        System.out.println("--- Contador de Palabras ---");
+        System.out.print("Introduce una frase: ");
+        String frase = scanner.nextLine();
+
+        if (frase.isEmpty()) {
+            System.out.println("No se ingresó ninguna frase.");
+            return;
+        }
+
+        String[] palabras = frase.trim().split("\\s+");
+        System.out.println("La frase contiene " + palabras.length + " palabras.");
     }
 }
