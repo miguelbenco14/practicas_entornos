@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class multiuso {
 
@@ -37,7 +39,7 @@ public class multiuso {
                     contadorPalabras(scanner);
                     break;
                 case 6:
-                    System.out.println("Mostrar fecha y hora actual (pendiente de implementación)");
+                    mostrarFechaHoraActual();
                     break;
                 case 0:
                     System.out.println("Saliendo del programa... ¡Hasta luego!");
@@ -166,5 +168,12 @@ public class multiuso {
 
         String[] palabras = frase.trim().split("\\s+");
         System.out.println("La frase contiene " + palabras.length + " palabras.");
+    }
+
+    public static void mostrarFechaHoraActual() {
+        System.out.println("--- Fecha y Hora Actual ---");
+        LocalDateTime ahora = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        System.out.println("Fecha y hora actual: " + ahora.format(formato));
     }
 }
